@@ -1,0 +1,22 @@
+.item-info {
+    text-align: left;
+    
+  }
+  
+  .price-info {
+    display: flex;
+    justify-content: left;
+    align-items: baseline;
+  }
+  
+  .discounted-price {
+    font-size: 24px;
+    margin-right: 10px;
+  }
+  
+  .retail-price {
+    font-size: 18px;
+    color: grey;
+    text-decoration: line-through;
+  }
+  

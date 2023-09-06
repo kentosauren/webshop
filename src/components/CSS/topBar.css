@@ -1,0 +1,29 @@
+/* TopBar.css */
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/assets/fonts/montserrat_n5.woff2') format('woff2');
+  font-weight: 500; /* n5 usually means 500 weight */
+  font-style: normal;
+}
+
+.top-bar {
+  background-color: #f8b912;
+  color: white;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;  /* Replace with your preferred grotesque font */
+  font-weight: normal; /* Normal font weight */
+  padding: 5px; /* Reduced padding */
+  text-align: center;
+  height: 30px; /* Reduced height */
+  line-height: 20px; /* Align text vertically */
+}
+
+.top-bar-text {
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
+
+.fade-out {
+  opacity: 0;
+}

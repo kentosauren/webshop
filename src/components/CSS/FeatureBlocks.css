@@ -1,0 +1,38 @@
+.feature-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .feature-block {
+    flex: 1;
+    min-width: calc(50% - 20px);  /* Adjusted for mobile */
+    padding: 10px;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  
+  .feature-icon {
+    font-size: 1.3em;
+  }
+  
+  .feature-header {
+    font-size: 0.7em;
+    text-transform: uppercase;
+    margin-top: 10px;
+  }
+  
+  .feature-subtext {
+    font-size: 0.6em;
+    margin-top: 5px;
+  }
+  
+  @media (min-width: 768px) {
+    .feature-block {
+      min-width: calc(25% - 20px);  /* Adjusted for desktop */
+    }
+  }
+  

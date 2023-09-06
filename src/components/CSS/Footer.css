@@ -1,0 +1,26 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ 
+  color: rgb(52, 52, 52); /* You can change this */
+  padding: 15px 7px;
+  width: 100%;
+  border-top: 1px solid rgb(206, 206, 206);
+}
+
+.footer-left {
+  flex: 1; /* Added this line */
+  padding-left: 7px;
+  white-space: nowrap; /* Prevents the text from wrapping */
+  font-size: 6pt;
+}
+
+.footer-right {
+  flex: 0; /* Added this line */
+  padding-right: 7px;
+}
+
+.footer-right img {
+  width: 170px;
+}

@@ -1,0 +1,112 @@
+/* MenuBar.css */
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/assets/fonts/montserrat_n5.woff2') format('woff2');
+    font-weight: 500; /* n5 usually means 500 weight */
+    font-style: normal;
+  }
+  
+
+.logo
+{
+    width: 150px;
+}
+
+.menu-bar {
+    font-family: 'Montserrat', sans-serif;  
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+    position: relative;
+    z-index: 1000;
+  }
+  
+  .menu-bar.scrolling {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: white;
+  }
+  
+  .menu-icon,
+  .cart-icon {
+    cursor: pointer;
+    padding: 10px;
+    font-size: 25pt;
+  }
+  
+  .cart-count {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 5px;
+    font-size: 12px;
+  }
+  
+  .sidebar {
+    z-index: 1001;
+    position: fixed;
+    top: 0;
+    left: -250px; /* Initially hidden */
+    width: 250px;
+    height: 100%;
+    background-color: white;
+    border-right: 1px solid grey;
+    transition: left 0.3s ease; /* Transition effect */
+  }
+  
+  .sidebar.show {
+    left: 0; /* Slide in */
+  }
+  
+  .sidebar-header {
+    display: flex;
+    font-weight: bolder;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid grey;
+  }
+  
+  .close-icon {
+    cursor: pointer;
+  }
+  
+  .sidebar-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar-links li {
+    padding: 10px;
+    border-bottom: 1px solid grey;
+  }
+  
+  .sidebar-links li a {
+    text-decoration: none;
+    color: black;
+  }
+  
+  .overlay {
+    opacity: 0; /* initially fully transparent */
+    pointer-events: none; /* doesn't capture mouse events */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* set to the final color */
+    transition: opacity 0.3s ease;
+    z-index: 999;
+  }
+  .overlay.show {
+    opacity: 1; /* fully visible */
+    pointer-events: auto; /* captures mouse events */
+  }
+  
+  
