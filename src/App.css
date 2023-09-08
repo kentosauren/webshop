@@ -1,13 +1,17 @@
+@import "font-awesome/css/font-awesome.min.css";
+
+
+
 @font-face {
    font-family: 'Montserrat';
-   src: url('/assets/fonts/montserrat_n5.woff2') format('woff2');
+   src: url('./src/assets/fonts/montserrat_n5.woff2') format('woff2');
    font-weight: 500; /* n5 usually means 500 weight */
    font-style: normal;
 }
 
 body{
    font-family: 'Montserrat', sans-serif; 
-   background-color: rgb(167, 167, 167);
+   background-color: var(--white);
     }
 
       

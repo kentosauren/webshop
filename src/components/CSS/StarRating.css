@@ -1,0 +1,14 @@
+
+.interactive-star-rating {
+  font-size: 1.3em;
+  cursor: pointer;
+}
+
+.star {
+  color: grey;
+  size: 15pt;
+}
+
+.star.selected {
+  color: var(--orange);
+}

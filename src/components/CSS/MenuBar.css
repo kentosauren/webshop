@@ -109,4 +109,8 @@
     pointer-events: auto; /* captures mouse events */
   }
   
+  .menu-bar-placeholder {
+    height: 70px;  /* Adjust this to the height of your menu bar */
+    visibility: hidden;
+  }
   

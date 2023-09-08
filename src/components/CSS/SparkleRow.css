@@ -1,0 +1,22 @@
+/* SparkleRow.css */
+
+.sparkle-container{
+  padding-top: 5pt;
+  padding-bottom: 15pt;
+
+}
+
+.sparkle-icon {
+    margin-right: 5px;
+  }
+  
+  .sparkle-row {
+    display: flex;
+    align-items: center;
+    
+  }
+  
+  .sparkle-text {
+    
+  }
+  

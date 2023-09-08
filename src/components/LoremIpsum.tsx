@@ -2,11 +2,14 @@ import React from "react";
 
 const LoremIpsum: React.FC = () => {
   return (
-    <div>
+    <div style={{ marginTop: "30px" }}>
       <h1>Lorem Ipsum Header</h1>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia
-        odio vitae vestibulum.
+        odio vitae vestibulum. Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit. Vivamus lacinia odio vitae vestibulum.Lorem ipsum dolor
+        sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae
+        vestibulum.
       </p>
       <h2>Subheader</h2>
       <p>

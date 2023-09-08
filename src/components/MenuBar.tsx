@@ -1,12 +1,12 @@
-// MenuBar.tsx
 import React, { useState, useEffect, useRef } from "react";
-import "./CSS/MenuBar.css"; // Adjust this path to where your MenuBar.css file is located
+import "./CSS/MenuBar.css";
 
 const MenuBar: React.FC = () => {
   const [scrolling, setScrolling] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
   const [showHeader, setShowHeader] = useState(false);
   const sidebarRef = useRef<HTMLDivElement>(null);
+  const menuBarRef = useRef<HTMLDivElement>(null);
 
   const handleScroll = () => {
     if (window.scrollY > 30) {
@@ -24,6 +24,7 @@ const MenuBar: React.FC = () => {
       setShowSidebar(false);
     }
   };
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("mousedown", handleClickOutside);
@@ -35,7 +36,7 @@ const MenuBar: React.FC = () => {
 
   useEffect(() => {
     if (showSidebar) {
-      setTimeout(() => setShowHeader(true), 300); // Delay showing the header
+      setTimeout(() => setShowHeader(true), 300);
     } else {
       setShowHeader(false);
     }
@@ -43,7 +44,11 @@ const MenuBar: React.FC = () => {
 
   return (
     <>
-      <div className={`menu-bar ${scrolling ? "scrolling" : ""}`}>
+      {scrolling && <div className="menu-bar-placeholder"></div>}
+      <div
+        ref={menuBarRef}
+        className={`menu-bar ${scrolling ? "scrolling" : ""}`}
+      >
         <div className="menu-icon" onClick={() => setShowSidebar(true)}>
           ☰
         </div>
@@ -52,6 +57,7 @@ const MenuBar: React.FC = () => {
             <img
               width="150px"
               src="./src/assets/img/metago/logoSmall.jpg"
+              alt="Logo"
             ></img>
           </a>
         </div>

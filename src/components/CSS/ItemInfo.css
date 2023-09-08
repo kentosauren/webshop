@@ -1,6 +1,7 @@
 .item-info {
     text-align: left;
-    
+    padding-top: 5px;
+    padding-bottom: 5px;
   }
   
   .price-info {
@@ -12,6 +13,7 @@
   .discounted-price {
     font-size: 24px;
     margin-right: 10px;
+    color: var(--darkPurple);
   }
   
   .retail-price {

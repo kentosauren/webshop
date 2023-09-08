@@ -6,7 +6,7 @@
   color: rgb(52, 52, 52); /* You can change this */
   padding: 15px 7px;
   width: 100%;
-  border-top: 1px solid rgb(206, 206, 206);
+  border-top: 1px solid var(--borderColor);
 }
 
 .footer-left {

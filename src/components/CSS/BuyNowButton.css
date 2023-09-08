@@ -1,0 +1,21 @@
+.buy-now-button {
+    width: 100%;
+    height: 40px;
+    background-color: var(--orange);
+    color: white;
+    font-size: 24px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .buy-now-button .icon {
+    margin-right: 10px;
+  }
+  
+  .buy-now-button:hover {
+    background-color: #ffa43c; /* Manually chosen darker shade of orange */
+  }
+  
