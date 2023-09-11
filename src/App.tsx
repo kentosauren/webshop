@@ -18,6 +18,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./components/CSS/Colors.css";
+import "./components/CSS/GlobalUnits.css";
 import "font-awesome/css/font-awesome.min.css";
 
 function App() {

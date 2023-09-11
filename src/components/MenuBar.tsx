@@ -1,3 +1,4 @@
+// MenuBar.tsx
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import "./CSS/MenuBar.css";
@@ -6,7 +7,6 @@ import "font-awesome/css/font-awesome.min.css";
 const MenuBar: React.FC = () => {
   const [scrolling, setScrolling] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
-  const [showHeader, setShowHeader] = useState(false);
   const sidebarRef = useRef<HTMLDivElement>(null);
   const menuBarRef = useRef<HTMLDivElement>(null);
 
@@ -36,14 +36,6 @@ const MenuBar: React.FC = () => {
     };
   }, []);
 
-  useEffect(() => {
-    if (showSidebar) {
-      setTimeout(() => setShowHeader(true), 300);
-    } else {
-      setShowHeader(false);
-    }
-  }, [showSidebar]);
-
   return (
     <>
       {scrolling && <div className="menu-bar-placeholder"></div>}
@@ -68,7 +60,26 @@ const MenuBar: React.FC = () => {
           <span className="cart-count">1</span>
         </div>
       </div>
-      {/* ... (existing code) */}
+      <div className={`overlay ${showSidebar ? "show" : ""}`}></div>
+      <div ref={sidebarRef} className={`sidebar ${showSidebar ? "show" : ""}`}>
+        <div className="sidebar-header">
+          <span>Menu</span>
+          <span className="close-icon" onClick={() => setShowSidebar(false)}>
+            <i className="fa fa-times"></i>
+          </span>
+        </div>
+        <ul className="sidebar-links">
+          <li>
+            <Link to="/">Startside</Link>
+          </li>
+          <li>
+            <Link to="/">Vilkår og personvern</Link>
+          </li>
+          <li>
+            <Link to="/">Samarbeid med oss</Link>
+          </li>
+        </ul>
+      </div>
     </>
   );
 };

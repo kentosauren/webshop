@@ -10,7 +10,7 @@ const BuyNowButton: React.FC = () => {
     const handleScroll = () => {
       if (buttonRef.current) {
         const rect = buttonRef.current.getBoundingClientRect();
-        if (rect.bottom < 60) {
+        if (rect.bottom < 57) {
           setIsSticky(true);
         } else {
           setIsSticky(false);

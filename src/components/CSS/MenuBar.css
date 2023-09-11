@@ -49,8 +49,8 @@
     background-color: var(--orange);
     color: white;
     border-radius: 50%;
-    width: 13px;  /* Add width */
-    height: 13px;  /* Add height */
+    width: 13px; 
+    height: 13px;  
     display: flex;
     align-items: center;
     justify-content: center;
@@ -139,7 +139,7 @@
   }
   
   .menu-bar-placeholder {
-    height: 70px;  /* Adjust this to the height of your menu bar */
+    height: 70px; 
     visibility: hidden;
   }
   
