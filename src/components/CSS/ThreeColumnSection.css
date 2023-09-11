@@ -1,23 +1,55 @@
+/* ./src/components/CSS/yourStylesheet.css */
+
 .three-column-section {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    border-top: 1px solid rgb(206, 206, 206);
-    font-size: 7pt;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border-top: 1px solid rgb(206, 206, 206);
+  font-size: 7pt; /* Increased from 7pt to 10pt */
+}
+
+.column {
+  flex: 1;
+  padding: 15px;
+  left: 0;
+}
+
+.bold-header {
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  margin-bottom: 5px;
+  left: 0;
+}
+
+/* Remove link styling */
+a {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+a:hover {
+  color: #7d7d7d !important; /* Dark text */
+}
+
+/* Media query for stacking columns vertically on smaller screens */
+@media (max-width: 600px) {
+  .three-column-section {
+    flex-direction: column;
   }
-  
   .column {
-    flex: 1;
-    padding: 15px;
+    border-bottom: 1px solid rgb(206, 206, 206); /* Add a bottom border */
   }
-  
-  .bold-header {
-    font-weight: bold;
-    font-size: 12pt;
+  /* Remove the bottom border from the last column */
+  .column:last-child {
+    border-bottom: none;
   }
-  
-  ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
+}

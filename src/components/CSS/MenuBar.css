@@ -34,19 +34,47 @@
   .cart-icon {
     cursor: pointer;
     padding: 10px;
-    font-size: 25pt;
+    font-size: 18pt;
   }
-  
+
+  .menu-icon i,
+.cart-icon i {
+  color: var(--darkPurple);
+}
+
   .cart-count {
     position: absolute;
     top: 0;
     right: 0;
-    background-color: red;
+    background-color: var(--orange);
     color: white;
     border-radius: 50%;
-    padding: 2px 5px;
+    width: 13px;  /* Add width */
+    height: 13px;  /* Add height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 12px;
+    top: 9px;
+    right: 2px;
   }
+  
+  .cart-count:hover {
+    animation: stretchSqueeze 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+  }
+  
+  @keyframes stretchSqueeze {
+    0%, 100% {
+      transform: scaleY(1);
+    }
+    25% {
+      transform: scaleY(1.2);
+    }
+    50%, 75% {
+      transform: scaleY(0.9);
+    }
+  }
+  
   
   .sidebar {
     z-index: 1001;
@@ -93,6 +121,7 @@
   }
   
   .overlay {
+    
     opacity: 0; /* initially fully transparent */
     pointer-events: none; /* doesn't capture mouse events */
     position: fixed;

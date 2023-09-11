@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import "./CSS/MenuBar.css";
+import "font-awesome/css/font-awesome.min.css";
 
 const MenuBar: React.FC = () => {
   const [scrolling, setScrolling] = useState(false);
@@ -50,7 +52,7 @@ const MenuBar: React.FC = () => {
         className={`menu-bar ${scrolling ? "scrolling" : ""}`}
       >
         <div className="menu-icon" onClick={() => setShowSidebar(true)}>
-          ☰
+          <i className="fa fa-bars"></i>
         </div>
         <div className="logo">
           <a href="/">
@@ -62,29 +64,11 @@ const MenuBar: React.FC = () => {
           </a>
         </div>
         <div className="cart-icon">
-          🛒<span className="cart-count">1</span>
+          <i className="fa fa-shopping-cart"></i>
+          <span className="cart-count">1</span>
         </div>
       </div>
-      <div className={`overlay ${showSidebar ? "show" : ""}`} />
-      <div ref={sidebarRef} className={`sidebar ${showSidebar ? "show" : ""}`}>
-        <div className={`sidebar-header ${showHeader ? "show" : ""}`}>
-          Meny
-          <span className="close-icon" onClick={() => setShowSidebar(false)}>
-            ✖
-          </span>
-        </div>
-        <ul className="sidebar-links">
-          <li>
-            <a href="#">Brukervilkår</a>
-          </li>
-          <li>
-            <a href="#">Personvernerklæring</a>
-          </li>
-          <li>
-            <a href="#">Ledige Jobber</a>
-          </li>
-        </ul>
-      </div>
+      {/* ... (existing code) */}
     </>
   );
 };

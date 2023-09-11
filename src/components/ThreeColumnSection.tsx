@@ -6,7 +6,7 @@ const ThreeColumnSection: React.FC = () => {
     <div className="three-column-section">
       <div className="column">
         <p>
-          Vi grunnla EazyFill for à lose problemet med sma skader pá veggene og
+          Vi grunnla Metago for à lose problemet med sma skader pá veggene og
           listverket i hjemmet ditt. Malet vart er a tilby en enkel og effektiv
           losing for à reparere disse skadene uten a matte leie dyre
           handverkere, slik at du kan fä tilbake folelsen av et friskt hjem pá
@@ -15,7 +15,7 @@ const ThreeColumnSection: React.FC = () => {
       </div>
       <div className="column">
         <h2 className="bold-header">Bedriftsinformasjon</h2>
-        <ul>
+        <ul style={{ padding: "0", margin: "0", listStyleType: "none" }}>
           <li>
             <a href="#">Brukervilkår</a>
           </li>
@@ -29,7 +29,7 @@ const ThreeColumnSection: React.FC = () => {
       </div>
       <div className="column">
         <h2 className="bold-header">Kundeservice</h2>
-        <ul>
+        <ul style={{ padding: "0", margin: "0", listStyleType: "none" }}>
           <li>
             <a href="#">Spørsmål og svar</a>
           </li>
