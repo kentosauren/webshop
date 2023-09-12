@@ -15,7 +15,7 @@ const TopBar: React.FC = () => {
             : "HØSTSALG | 40% RABATT"
         );
         setFade(false);
-      }, 1000); // 1 second to match the CSS transition duration
+      }, 750); // 1 second to match the CSS transition duration
     }, 5000);
 
     return () => clearInterval(timer);

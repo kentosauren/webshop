@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./CSS/ThreeColumnSection.css"; // Make sure to create this CSS file
 
 const ThreeColumnSection: React.FC = () => {
@@ -43,7 +44,7 @@ const ThreeColumnSection: React.FC = () => {
             <a href="#">Bli forhandler</a>
           </li>
           <li>
-            <a href="#">Refusjonspolicy</a>
+            <Link to="/returns">Returer</Link>
           </li>
         </ul>
       </div>

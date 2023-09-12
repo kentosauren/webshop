@@ -73,7 +73,7 @@ const MenuBar: React.FC = () => {
             <Link to="/">Startside</Link>
           </li>
           <li>
-            <Link to="/">Vilkår og personvern</Link>
+            <Link to="/terms">Vilkår og personvern</Link>
           </li>
           <li>
             <Link to="/">Samarbeid med oss</Link>

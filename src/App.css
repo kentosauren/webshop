@@ -36,3 +36,17 @@ margin-right: auto;
    font-size: 12px;
     
     }
+
+    /* src/components/CSS/ResponsiveLayout.css */
+.responsive-layout {
+   display: flex;
+   flex-direction: column;
+ }
+ 
+ /* Media query for screens larger than 768px */
+ @media (min-width: 600px) {
+   .responsive-layout {
+     flex-direction: row;
+   }
+ }
+ 
