@@ -1,11 +1,15 @@
 
 /*background-color: var(--primary-color);*/
 :root {
+  
+    --pinkBlue: #f9f9ff;
     --darkPurple: #1f1949;
     --orange: #f8b912;
     --white: rgb(167, 167, 167);
     --error-color: #e74c3c;
     --text-color: #333;
-    --borderColor: rgb(206, 206, 206);
+    --lighter-blue: #eef1ff;
+    --lightBlue: #88d2f7;
+    --dark-blue: #0596d4;
     /* add more colors */
   }

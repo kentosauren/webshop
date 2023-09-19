@@ -1,0 +1,63 @@
+
+.container-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center !important;
+  justify-content: center;
+}
+
+.checkout {
+  background-color: var(--lightBlue);
+
+    font-family: sans-serif;
+    min-width: 350px;
+    max-width: 800px;
+    margin: 16px;
+    overflow: auto;
+  }
+  
+ 
+  hr {
+    opacity: 1;
+    background-color:white; /* Use background-color instead of color */
+    height: 2px;  /* Increased height for thickness */
+    border: none; /* Remove default border */
+    margin: 0;
+  }
+  
+ 
+
+
+
+.delsum {
+  display: flex;
+  justify-content: space-between;  /* This will space the elements to the ends */
+  padding: 20px;
+  font-size: 20px;
+}
+
+  
+  .frakt {
+    display: flex; /* Enable flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    font-size: 15px;
+    padding: 10px;
+  }
+  
+  
+ .sjekkut {
+    display: flex; /* Enable flexbox */
+    justify-content: center; /* Center horizontally */
+
+  }
+  
+  button {
+    background-color: var(--dark-blue);
+    color: black;
+    border: none;
+    margin: 10px;
+    padding: 20px;
+    width: 100%;
+  }
+  

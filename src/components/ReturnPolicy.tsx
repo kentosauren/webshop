@@ -12,7 +12,7 @@ const ReturnPolicy: React.FC = () => {
         setTermsContent(data);
       })
       .catch((error) => {
-        console.error("Error fetching terms:", error);
+        console.error("Error fetching return policies:", error);
       });
   }, []);
 

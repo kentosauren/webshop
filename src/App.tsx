@@ -1,20 +1,14 @@
-import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import TopBar from "./components/topBar";
 import MenuBar from "./components/MenuBar";
-import ImageCarouselResponsive from "./components/ImageCarouselResponsive";
 import Footer from "./components/Footer";
-import LoremIpsum from "./components/LoremIpsum";
 import ThreeColumnSection from "./components/ThreeColumnSection";
 import FeatureBlocks from "./components/FeatureBlocks";
-import ItemCard from "./components/ItemCard";
 
-import CheckoutWizard from "./components/checkoutOld/CheckoutWizard";
+import ProductPage from "./components/ProductPage";
+import CheckoutWizard from "./components/checkout/CheckoutWizard";
 import Terms from "./components/terms";
 import ReturnPolicy from "./components/ReturnPolicy";
-import SalesBasket from "./components/checkout/SalesBasket";
-
-SalesBasket;
 
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -31,30 +25,16 @@ function App() {
         <TopBar />
         <MenuBar />
         <Routes>
+          <Route path="/" element={<ProductPage />} />
           <Route
-            path="/"
+            path="/checkout/*"
             element={
-              <div className="mainContent">
-                {/* <div className="responsive-layout"> */}
-                <ImageCarouselResponsive />
-                <ItemCard />
-                {/* </div> */}
-
-                <LoremIpsum />
-                <img
-                  src="./src/assets/img/3.jpg"
-                  style={{
-                    width: "500px",
-                    left: "auto",
-                    right: "auto",
-                  }}
-                />
-
-                <LoremIpsum />
+              <div>
+                <CheckoutWizard />
               </div>
             }
           />
-          <Route path="/checkout" element={<CheckoutWizard />} />
+
           <Route path="/terms" element={<Terms />} />
           <Route path="/returns" element={<ReturnPolicy />} />
         </Routes>

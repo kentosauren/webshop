@@ -15,7 +15,7 @@ const ItemInfo: React.FC<ItemInfoProps> = ({
 }) => {
   return (
     <div className="item-info">
-      <h1>{name}</h1>
+      <h2>{name}</h2>
       <div className="price-info">
         <span className="discounted-price">${discountedPrice.toFixed(2)}</span>
         <span className="retail-price">${retailPrice.toFixed(2)}</span>

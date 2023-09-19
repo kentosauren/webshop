@@ -7,11 +7,11 @@ const ThreeColumnSection: React.FC = () => {
     <div className="three-column-section">
       <div className="column">
         <p>
-          Vi grunnla Metago for à lose problemet med sma skader pá veggene og
-          listverket i hjemmet ditt. Malet vart er a tilby en enkel og effektiv
-          losing for à reparere disse skadene uten a matte leie dyre
-          handverkere, slik at du kan fä tilbake folelsen av et friskt hjem pá
-          null tid. Stol pa EazyFill for forbedre opplevelsen av hjemmet ditt!
+          Vi grunnla Metago for å løse problemet med små skader på veggene og
+          listverket i hjemmet ditt. Målet vårt er å tilby en enkel og effektiv
+          løsning for å reparere disse skadene uten å måtte leie dyre
+          håndverkere, slik at du kan få tilbake følelsen av et friskt hjem på
+          null tid. Stol på Metagp for å forbedre opplevelsen av hjemmet ditt!
         </p>
       </div>
       <div className="column">
@@ -21,10 +21,10 @@ const ThreeColumnSection: React.FC = () => {
             <a href="#">Brukervilkår</a>
           </li>
           <li>
-            <a href="#">Link 2</a>
+            <a href="#">Personværnerklæring</a>
           </li>
           <li>
-            <a href="#">Link 3</a>
+            <a href="#">Samarbeid med oss!</a>
           </li>
         </ul>
       </div>
