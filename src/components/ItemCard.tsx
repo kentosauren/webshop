@@ -18,7 +18,7 @@ const ItemCard: React.FC = () => {
       />
       <StarRating />
       <SparkleRow />
-      <Link to="/checkout/cart">
+      <Link to="/cart">
         <BuyNowButton />
       </Link>
     </>

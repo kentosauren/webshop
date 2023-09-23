@@ -11,7 +11,7 @@ const CartTotal: React.FC<Props> = ({ totalPrice }) => {
 
   const goToNextStep = () => {
     // Navigate to the delivery information step
-    navigate("/checkout/deliveryInfo");
+    navigate("/checkout");
   };
 
   return (

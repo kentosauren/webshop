@@ -4,9 +4,11 @@ import MenuBar from "./components/MenuBar";
 import Footer from "./components/Footer";
 import ThreeColumnSection from "./components/ThreeColumnSection";
 import FeatureBlocks from "./components/FeatureBlocks";
+import Cart from "./components/checkout/Cart";
+import Checkout from "./components/checkout/Checkout";
 
 import ProductPage from "./components/ProductPage";
-import CheckoutWizard from "./components/checkout/CheckoutWizard";
+// import CheckoutWizard from "./components/checkout/CheckoutWizard";
 import Terms from "./components/terms";
 import ReturnPolicy from "./components/ReturnPolicy";
 
@@ -26,15 +28,8 @@ function App() {
         <MenuBar />
         <Routes>
           <Route path="/" element={<ProductPage />} />
-          <Route
-            path="/checkout/*"
-            element={
-              <div>
-                <CheckoutWizard />
-              </div>
-            }
-          />
-
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/returns" element={<ReturnPolicy />} />
         </Routes>

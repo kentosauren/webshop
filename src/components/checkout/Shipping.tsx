@@ -1,29 +1,47 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import "./CSS/Shipping.css";
 
 const Shipping: React.FC = () => {
-  const navigate = useNavigate();
-
-  const goToPreviousStep = () => {
-    // Navigate to the sales basket step
-    navigate("/checkout/deliveryInfo");
-  };
-
-  const goToNextStep = () => {
-    // Navigate to the sales basket step
-    navigate("/checkout/Payment");
-  };
+  const [selectedMethod, setSelectedMethod] = useState<string>("");
 
   return (
-    <div>
-      <h1>Fraktmetode</h1>
-      {/* Your form fields and other UI elements go here */}
-
-      <div className="button-container">
-        <button onClick={goToPreviousStep}>Previous</button>
-        <button onClick={goToNextStep}>Next</button>
+    <>
+      <h3>Fraktmetode</h3>
+      <div className="shipping-method">
+        <label
+          className={`method-option ${
+            selectedMethod === "free" ? "active" : ""
+          }`}
+        >
+          <input
+            type="radio"
+            name="shipping"
+            value="free"
+            checked={selectedMethod === "free"}
+            onChange={() => setSelectedMethod("free")}
+          />
+          <div className="method-text-wrapper">Gratis sporbar frakt</div>
+          <span className="method-amount">Gratis</span>
+        </label>
+        <label
+          className={`method-option ${
+            selectedMethod === "premium" ? "active" : ""
+          }`}
+        >
+          <input
+            type="radio"
+            name="shipping"
+            value="premium"
+            checked={selectedMethod === "premium"}
+            onChange={() => setSelectedMethod("premium")}
+          />
+          <div className="method-text-wrapper">
+            Forsikret frakt + hopp over køen (behandle bestillingen min først)
+          </div>
+          <span className="method-amount">Kr 39</span>
+        </label>
       </div>
-    </div>
+    </>
   );
 };
 

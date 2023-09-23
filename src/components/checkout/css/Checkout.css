@@ -1,0 +1,17 @@
+.outerContainer
+{
+    background-color: var(--pinkBlue);
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 40px;
+
+}
+
+.custom-hr{
+    margin-bottom: 30px;
+}
+
+div + hr {
+    margin-top: 50px;
+  }

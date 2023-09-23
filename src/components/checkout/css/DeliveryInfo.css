@@ -2,7 +2,6 @@
 
 
 .container {
-  background-color: var(--pinkBlue);
   max-width: 100%;
   /* margin: auto; */
   /* padding: 20px; */
@@ -17,7 +16,6 @@
 
 .input-row-full input {
   width: 100% !important; 
-  padding: 10px;
   border-radius: 5px;
   border: 1px solid grey;
 }
@@ -44,6 +42,7 @@
 .button-container button {
   padding: 10px 20px;
   font-size: 16px;
+  margin-right: 10px;
 }
 
 .error {

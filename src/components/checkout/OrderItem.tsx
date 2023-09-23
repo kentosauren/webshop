@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import "./CSS/CartItem.css";
+import "./CSS/OrderItem.css";
 
-interface CartItemProps {
+interface OrderItemProps {
   itemName: string;
   originalPrice: number;
   discountedPrice: number;
@@ -9,7 +9,7 @@ interface CartItemProps {
   updateTotalPrice: (newPrice: number) => void;
 }
 
-const CartItem: React.FC<CartItemProps> = ({
+const OrderItem: React.FC<OrderItemProps> = ({
   itemName,
   originalPrice,
   discountedPrice,
@@ -42,13 +42,7 @@ const CartItem: React.FC<CartItemProps> = ({
         <div className="item-info">
           <h3>{itemName}</h3>
           <div className="hor">
-            <div className="item-counter">
-              <button onClick={decrement}>-</button>
-              <span style={{ paddingLeft: "7px", paddingRight: "7px" }}>
-                {quantity}
-              </span>
-              <button onClick={increment}>+</button>
-            </div>
+            <div className="item-counter">{quantity + " stk"}</div>
             <div className="item-prices">
               <span className="original-price">
                 {(originalPrice * quantity).toFixed(2)} Kr
@@ -64,4 +58,4 @@ const CartItem: React.FC<CartItemProps> = ({
   );
 };
 
-export default CartItem;
+export default OrderItem;
