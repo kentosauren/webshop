@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./CSS/DeliveryInfo.css";
 
@@ -29,7 +29,12 @@ const initialInfo: DeliveryInfo = {
 };
 
 const DeliveryInfo: React.FC = () => {
-  const [info, setInfo] = useState<DeliveryInfo>(initialInfo);
+  const [info, setInfo] = useState<DeliveryInfo>(() => {
+    // Try to load initial state from local storage
+    const storedInfo = localStorage.getItem("deliveryInfo");
+    return storedInfo ? JSON.parse(storedInfo) : initialInfo;
+  });
+
   const [errors, setErrors] = useState<
     Partial<Record<keyof DeliveryInfo, string>>
   >({});
@@ -43,6 +48,10 @@ const DeliveryInfo: React.FC = () => {
       [name]: value,
     });
   };
+
+  useEffect(() => {
+    localStorage.setItem("deliveryInfo", JSON.stringify(info));
+  }, [info]);
 
   const getErrorClass = (fieldName: keyof DeliveryInfo) => {
     return errors[fieldName] ? "error" : "";
@@ -72,19 +81,6 @@ const DeliveryInfo: React.FC = () => {
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
-  };
-
-  const goToPreviousStep = () => {
-    navigate("/checkout/cart");
-  };
-
-  const goToNextStep = () => {
-    if (validateForm()) {
-      // Save the information to state or send it to the server
-      console.log("Button clicked");
-
-      navigate("/checkout/shipping");
-    }
   };
 
   return (
