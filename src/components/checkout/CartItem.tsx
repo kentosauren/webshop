@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./CSS/CartItem.css";
-import { useQuantity } from "../../contexts/QuantityContext";
 
 interface CartItemProps {
   itemName: string;
@@ -8,6 +7,8 @@ interface CartItemProps {
   discountedPrice: number;
   imageUrl: string;
   updateTotalPrice: (newPrice: number) => void;
+  quantity: number;
+  setQuantity: (newQuantity: number) => void;
 }
 
 const CartItem: React.FC<CartItemProps> = ({
@@ -16,16 +17,22 @@ const CartItem: React.FC<CartItemProps> = ({
   discountedPrice,
   imageUrl,
   updateTotalPrice,
+  quantity,
+  setQuantity,
 }) => {
-  const { quantity, setQuantity } = useQuantity();
-
   const increment = () => {
-    setQuantity(quantity + 1);
+    const newQuantity = quantity + 1;
+    setQuantity(newQuantity);
+    localStorage.setItem("itemQuantity", newQuantity.toString());
+    window.dispatchEvent(new Event("itemQuantityUpdated"));
   };
 
   const decrement = () => {
     if (quantity > 1) {
-      setQuantity(quantity - 1);
+      const newQuantity = quantity - 1;
+      setQuantity(newQuantity);
+      localStorage.setItem("itemQuantity", newQuantity.toString());
+      window.dispatchEvent(new Event("itemQuantityUpdated"));
     }
   };
 
@@ -52,10 +59,20 @@ const CartItem: React.FC<CartItemProps> = ({
             </div>
             <div className="item-prices">
               <span className="original-price">
-                {(originalPrice * quantity).toFixed(2)} Kr
+                {" "}
+                {(originalPrice * quantity).toLocaleString("nb-NO", {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}{" "}
+                Kr
               </span>
               <span className="discounted-price">
-                {(discountedPrice * quantity).toFixed(2)} Kr
+                {" "}
+                {(discountedPrice * quantity).toLocaleString("nb-NO", {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}{" "}
+                Kr
               </span>
             </div>
           </div>

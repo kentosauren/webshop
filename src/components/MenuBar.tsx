@@ -1,13 +1,10 @@
-// MenuBar.tsx
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import "./CSS/MenuBar.css";
 import "font-awesome/css/font-awesome.min.css";
-import { useQuantity } from "../contexts/QuantityContext";
 
 const MenuBar: React.FC = () => {
-  const { quantity, setQuantity } = useQuantity();
-
+  const [quantity, setQuantity] = useState<number>(0);
   const [scrolling, setScrolling] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
   const sidebarRef = useRef<HTMLDivElement>(null);
@@ -30,7 +27,29 @@ const MenuBar: React.FC = () => {
     }
   };
 
+  const updateQuantity = (newQuantity: number) => {
+    setQuantity(newQuantity);
+    localStorage.setItem("itemQuantity", newQuantity.toString());
+  };
+
   useEffect(() => {
+    // Fetch the initial quantity from local storage
+    const initialQuantity = localStorage.getItem("itemQuantity");
+    if (initialQuantity) {
+      setQuantity(Number(initialQuantity));
+    }
+
+    // Function to handle custom event
+    const handleItemQuantityUpdated = () => {
+      const updatedQuantity = localStorage.getItem("itemQuantity");
+      if (updatedQuantity) {
+        setQuantity(Number(updatedQuantity));
+      }
+    };
+
+    // Listen for the custom event
+    window.addEventListener("itemQuantityUpdated", handleItemQuantityUpdated);
+
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("mousedown", handleClickOutside);
     return () => {
@@ -62,7 +81,6 @@ const MenuBar: React.FC = () => {
         <Link to="/cart">
           <div className="cart-icon">
             <i className="fa fa-shopping-cart"></i>
-
             {quantity > 0 ? (
               <span className="cart-count">{quantity}</span>
             ) : null}

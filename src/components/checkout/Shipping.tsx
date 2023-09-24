@@ -1,10 +1,25 @@
 import React, { useState } from "react";
 import "./CSS/Shipping.css";
 
-const Shipping: React.FC = () => {
+interface ShippingProps {
+  setShippingAmount: (amount: number) => void;
+}
+
+const Shipping: React.FC<ShippingProps> = ({ setShippingAmount }) => {
   const [selectedMethod, setSelectedMethod] = useState<string>("free");
-  let amountShippingFree = 0;
-  let amountShippingPlus = 39;
+  const amountShippingFree = 0;
+  const amountShippingPlus = 39;
+
+  const handleMethodChange = (method: string) => {
+    setSelectedMethod(method);
+
+    if (method === "free") {
+      setShippingAmount(amountShippingFree);
+    } else {
+      setShippingAmount(amountShippingPlus);
+    }
+  };
+
   return (
     <>
       <h3>Fraktmetode</h3>
@@ -19,7 +34,7 @@ const Shipping: React.FC = () => {
             name="shipping"
             value="free"
             checked={selectedMethod === "free"}
-            onChange={() => setSelectedMethod("free")}
+            onChange={() => handleMethodChange("free")}
           />
           <div className="method-text-wrapper">Gratis sporbar frakt</div>
           <span className="method-amount">Gratis</span>
@@ -34,7 +49,7 @@ const Shipping: React.FC = () => {
             name="shipping"
             value="premium"
             checked={selectedMethod === "premium"}
-            onChange={() => setSelectedMethod("premium")}
+            onChange={() => handleMethodChange("premium")}
           />
           <div className="method-text-wrapper">
             Forsikret frakt + hopp over køen (behandle bestillingen min først)

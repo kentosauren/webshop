@@ -20,25 +20,25 @@ import "./components/CSS/Colors.css";
 import "./components/CSS/GlobalUnits.css";
 import "font-awesome/css/font-awesome.min.css";
 
-import { QuantityProvider } from "./contexts/QuantityContext";
+//import { QuantityProvider } from "./contexts/QuantityContext";
 
 function App() {
   return (
     <Router>
-      <QuantityProvider>
-        <TopBar />
-        <MenuBar />
-        <Routes>
-          <Route path="/" element={<ProductPage />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/terms" element={<Terms />} />
-          <Route path="/returns" element={<ReturnPolicy />} />
-        </Routes>
-        <FeatureBlocks />
-        <ThreeColumnSection />
-        <Footer />
-      </QuantityProvider>
+      {/* <QuantityProvider> */}
+      <TopBar />
+      <MenuBar />
+      <Routes>
+        <Route path="/" element={<ProductPage />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/returns" element={<ReturnPolicy />} />
+      </Routes>
+      <FeatureBlocks />
+      <ThreeColumnSection />
+      <Footer />
+      {/* </QuantityProvider> */}
     </Router>
   );
 }

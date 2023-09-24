@@ -3,11 +3,8 @@ import CartItem from "./CartItem";
 import CartTotal from "./CartTotal";
 import "./CSS/Cart.css";
 
-import { useQuantity } from "../../contexts/QuantityContext";
-
 const Cart: React.FC = () => {
-  const { quantity, setQuantity } = useQuantity();
-
+  const [quantity, setQuantity] = useState<number>(0);
   const [totalPrice, setTotalPrice] = useState<number>(0);
 
   const updateTotalPrice = (newPrice: number) => {
@@ -15,12 +12,32 @@ const Cart: React.FC = () => {
   };
 
   let price = 1199;
-  let discPercent = 33;
+
+  // Function to sync quantity with local storage
+  const syncQuantity = () => {
+    const storedQuantity = localStorage.getItem("itemQuantity");
+    if (storedQuantity !== null) {
+      setQuantity(Number(storedQuantity));
+    }
+  };
+
+  useEffect(() => {
+    // Initial sync
+    syncQuantity();
+
+    // Listen for changes in local storage
+    window.addEventListener("storage", syncQuantity);
+
+    // Clean up
+    return () => {
+      window.removeEventListener("storage", syncQuantity);
+    };
+  }, []);
 
   useEffect(() => {
     const discountedPrice = price;
     updateTotalPrice(discountedPrice);
-  }, []);
+  }, [quantity]);
 
   return (
     <>
@@ -29,10 +46,12 @@ const Cart: React.FC = () => {
           <div className="container-center ">
             <CartItem
               itemName="Laptop Original max pro ultra 4k"
-              originalPrice={Math.round(price * 1.33)} // 33% more than price
+              originalPrice={Math.round(price * 1.33)}
               discountedPrice={price}
               imageUrl="../src/assets/img/4.jpg"
               updateTotalPrice={updateTotalPrice}
+              quantity={quantity}
+              setQuantity={setQuantity}
             />
             <CartTotal totalPrice={totalPrice} />
           </div>

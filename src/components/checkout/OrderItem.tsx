@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./CSS/OrderItem.css";
-import { useQuantity } from "../../contexts/QuantityContext";
 
 interface OrderItemProps {
   itemName: string;
@@ -17,18 +16,17 @@ const OrderItem: React.FC<OrderItemProps> = ({
   imageUrl,
   updateTotalPrice,
 }) => {
-  const { quantity, setQuantity } = useQuantity();
+  const [quantity, setQuantity] = useState<number>(0);
 
-  const increment = () => {
-    setQuantity(quantity + 1);
-  };
-
-  const decrement = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
+  // Initialize quantity from localStorage
+  useEffect(() => {
+    const storedQuantity = localStorage.getItem("itemQuantity");
+    if (storedQuantity) {
+      setQuantity(Number(storedQuantity));
     }
-  };
+  }, []);
 
+  // Update the total price based on the current quantity
   useEffect(() => {
     const newPrice = discountedPrice * quantity;
     updateTotalPrice(newPrice);
@@ -46,10 +44,20 @@ const OrderItem: React.FC<OrderItemProps> = ({
             <div className="item-counter">{quantity + " stk"}</div>
             <div className="item-prices">
               <span className="original-price">
-                {(originalPrice * quantity).toFixed(2)} Kr
+                {" "}
+                {(originalPrice * quantity).toLocaleString("nb-NO", {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}{" "}
+                Kr
               </span>
               <span className="discounted-price">
-                {(discountedPrice * quantity).toFixed(2)} Kr
+                {" "}
+                {(discountedPrice * quantity).toLocaleString("nb-NO", {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}{" "}
+                Kr
               </span>
             </div>
           </div>
