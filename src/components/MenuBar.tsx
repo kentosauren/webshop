@@ -3,8 +3,11 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import "./CSS/MenuBar.css";
 import "font-awesome/css/font-awesome.min.css";
+import { useQuantity } from "../contexts/QuantityContext";
 
 const MenuBar: React.FC = () => {
+  const { quantity, setQuantity } = useQuantity();
+
   const [scrolling, setScrolling] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
   const sidebarRef = useRef<HTMLDivElement>(null);
@@ -46,19 +49,25 @@ const MenuBar: React.FC = () => {
         <div className="menu-icon" onClick={() => setShowSidebar(true)}>
           <i className="fa fa-bars"></i>
         </div>
-        <div className="logo">
-          <a href="/">
+        <Link to="/">
+          <div className="logo">
             <img
               width="150px"
               src="./src/assets/img/metago/logoSmall.jpg"
               alt="Logo"
             ></img>
-          </a>
-        </div>
-        <div className="cart-icon">
-          <i className="fa fa-shopping-cart"></i>
-          <span className="cart-count">1</span>
-        </div>
+          </div>
+        </Link>
+
+        <Link to="/cart">
+          <div className="cart-icon">
+            <i className="fa fa-shopping-cart"></i>
+
+            {quantity > 0 ? (
+              <span className="cart-count">{quantity}</span>
+            ) : null}
+          </div>
+        </Link>
       </div>
       <div className={`overlay ${showSidebar ? "show" : ""}`}></div>
       <div ref={sidebarRef} className={`sidebar ${showSidebar ? "show" : ""}`}>

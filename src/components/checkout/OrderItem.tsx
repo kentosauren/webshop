@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./CSS/OrderItem.css";
+import { useQuantity } from "../../contexts/QuantityContext";
 
 interface OrderItemProps {
   itemName: string;
@@ -16,7 +17,7 @@ const OrderItem: React.FC<OrderItemProps> = ({
   imageUrl,
   updateTotalPrice,
 }) => {
-  const [quantity, setQuantity] = useState(1);
+  const { quantity, setQuantity } = useQuantity();
 
   const increment = () => {
     setQuantity(quantity + 1);

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./CSS/CartItem.css";
+import { useQuantity } from "../../contexts/QuantityContext";
 
 interface CartItemProps {
   itemName: string;
@@ -16,7 +17,7 @@ const CartItem: React.FC<CartItemProps> = ({
   imageUrl,
   updateTotalPrice,
 }) => {
-  const [quantity, setQuantity] = useState(1);
+  const { quantity, setQuantity } = useQuantity();
 
   const increment = () => {
     setQuantity(quantity + 1);

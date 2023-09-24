@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import "./CSS/Shipping.css";
 
 const Shipping: React.FC = () => {
-  const [selectedMethod, setSelectedMethod] = useState<string>("");
-
+  const [selectedMethod, setSelectedMethod] = useState<string>("free");
+  let amountShippingFree = 0;
+  let amountShippingPlus = 39;
   return (
     <>
       <h3>Fraktmetode</h3>
@@ -38,7 +39,7 @@ const Shipping: React.FC = () => {
           <div className="method-text-wrapper">
             Forsikret frakt + hopp over køen (behandle bestillingen min først)
           </div>
-          <span className="method-amount">Kr 39</span>
+          <span className="method-amount">Kr {amountShippingPlus}</span>
         </label>
       </div>
     </>

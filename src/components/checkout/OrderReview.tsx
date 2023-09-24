@@ -16,7 +16,7 @@ const OrderReview: React.FC = () => {
 
   return (
     <>
-      <h3>Order Review</h3>
+      <h3>Bestillingssammendrag</h3>
       <OrderItem
         itemName="Laptop Original max pro ultra 4k"
         originalPrice={Math.round(price * 1.33)} // 33% more than price

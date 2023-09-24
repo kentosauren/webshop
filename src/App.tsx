@@ -20,10 +20,12 @@ import "./components/CSS/Colors.css";
 import "./components/CSS/GlobalUnits.css";
 import "font-awesome/css/font-awesome.min.css";
 
+import { QuantityProvider } from "./contexts/QuantityContext";
+
 function App() {
   return (
     <Router>
-      <>
+      <QuantityProvider>
         <TopBar />
         <MenuBar />
         <Routes>
@@ -36,7 +38,7 @@ function App() {
         <FeatureBlocks />
         <ThreeColumnSection />
         <Footer />
-      </>
+      </QuantityProvider>
     </Router>
   );
 }
