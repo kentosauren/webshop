@@ -42,6 +42,7 @@ const Cart: React.FC = () => {
   return (
     <>
       <div className="outer">
+        <h1>Din handlekurv</h1>
         {quantity > 0 ? (
           <div className="container-center ">
             <CartItem

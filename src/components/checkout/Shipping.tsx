@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./CSS/Shipping.css";
 
 interface ShippingProps {
@@ -6,9 +6,17 @@ interface ShippingProps {
 }
 
 const Shipping: React.FC<ShippingProps> = ({ setShippingAmount }) => {
-  const [selectedMethod, setSelectedMethod] = useState<string>("free");
+  // Initialize selectedMethod from localStorage or set it to 'free'
+  const initialMethod = localStorage.getItem("selectedMethod") || "free";
+
+  const [selectedMethod, setSelectedMethod] = useState<string>(initialMethod);
   const amountShippingFree = 0;
   const amountShippingPlus = 39;
+
+  useEffect(() => {
+    // Save selectedMethod to localStorage
+    localStorage.setItem("selectedMethod", selectedMethod);
+  }, [selectedMethod]);
 
   const handleMethodChange = (method: string) => {
     setSelectedMethod(method);

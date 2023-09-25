@@ -52,7 +52,13 @@ const CartItem: React.FC<CartItemProps> = ({
           <div className="hor">
             <div className="item-counter">
               <button onClick={decrement}>-</button>
-              <span style={{ paddingLeft: "7px", paddingRight: "7px" }}>
+              <span
+                style={{
+                  paddingLeft: "10px",
+                  paddingRight: "10px",
+                  width: "30px",
+                }}
+              >
                 {quantity}
               </span>
               <button onClick={increment}>+</button>

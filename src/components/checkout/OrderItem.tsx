@@ -34,16 +34,16 @@ const OrderItem: React.FC<OrderItemProps> = ({
 
   return (
     <>
-      <div className="sales-basket-item">
-        <div className="image-container">
-          <img src={imageUrl} alt={itemName} className="item-image" />
+      <div className="order-basket-item">
+        <div className="order-image-container">
+          <img src={imageUrl} alt={itemName} className="order-item-image" />
         </div>
-        <div className="item-info">
+        <div className="order-item-info">
           <h3>{itemName}</h3>
-          <div className="hor">
-            <div className="item-counter">{quantity + " stk"}</div>
-            <div className="item-prices">
-              <span className="original-price">
+          <div className="order-hor">
+            <div className="order-item-counter">{quantity + " stk"}</div>
+            <div className="order-item-prices">
+              <span className="order-original-price">
                 {" "}
                 {(originalPrice * quantity).toLocaleString("nb-NO", {
                   minimumFractionDigits: 2,
@@ -51,7 +51,7 @@ const OrderItem: React.FC<OrderItemProps> = ({
                 })}{" "}
                 Kr
               </span>
-              <span className="discounted-price">
+              <span className="order-discounted-price">
                 {" "}
                 {(discountedPrice * quantity).toLocaleString("nb-NO", {
                   minimumFractionDigits: 2,

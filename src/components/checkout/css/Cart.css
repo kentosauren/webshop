@@ -1,4 +1,6 @@
 .outer{
+  margin-top: 40px;
+  margin-bottom: 40px;
 min-height: 400px;
 
 }
@@ -12,15 +14,17 @@ min-height: 400px;
   flex-direction: column;
   align-items: center !important;
   justify-content: center;
+
 }
 
 .checkout {
-  background-color: var(--lightBlue);
-
+  background-color: var(--pinkBlue);
+  border: 1px solid var(--darkPurple);
+  border-radius: 3px;
     font-family: sans-serif;
+    width: 80%;
     min-width: 350px;
     max-width: 800px;
-    margin: 16px;
     overflow: auto;
   }
   
@@ -61,7 +65,7 @@ min-height: 400px;
   }
   
   button {
-    background-color: var(--dark-blue);
+    background-color: var(--orange);
     color: black;
     border: none;
     margin: 10px;

@@ -18,6 +18,10 @@ const MenuBar: React.FC = () => {
     }
   };
 
+  const closeSidebar = () => {
+    setShowSidebar(false);
+  };
+
   const handleClickOutside = (event: MouseEvent) => {
     if (
       sidebarRef.current &&
@@ -65,9 +69,12 @@ const MenuBar: React.FC = () => {
         ref={menuBarRef}
         className={`menu-bar ${scrolling ? "scrolling" : ""}`}
       >
-        <div className="menu-icon" onClick={() => setShowSidebar(true)}>
-          <i className="fa fa-bars"></i>
+        <div style={{ paddingLeft: "10px" }}>
+          <div className="menu-icon" onClick={() => setShowSidebar(true)}>
+            <i className="fa fa-bars"></i>
+          </div>
         </div>
+
         <Link to="/">
           <div className="logo">
             <img
@@ -78,14 +85,16 @@ const MenuBar: React.FC = () => {
           </div>
         </Link>
 
-        <Link to="/cart">
-          <div className="cart-icon">
-            <i className="fa fa-shopping-cart"></i>
-            {quantity > 0 ? (
-              <span className="cart-count">{quantity}</span>
-            ) : null}
-          </div>
-        </Link>
+        <div style={{ paddingRight: "10px" }}>
+          <Link to="/cart">
+            <div className="cart-icon">
+              <i className="fa fa-shopping-cart"></i>
+              {quantity > 0 ? (
+                <span className="cart-count">{quantity}</span>
+              ) : null}
+            </div>
+          </Link>
+        </div>
       </div>
       <div className={`overlay ${showSidebar ? "show" : ""}`}></div>
       <div ref={sidebarRef} className={`sidebar ${showSidebar ? "show" : ""}`}>
@@ -97,13 +106,19 @@ const MenuBar: React.FC = () => {
         </div>
         <ul className="sidebar-links">
           <li>
-            <Link to="/">Startside</Link>
+            <Link to="/" onClick={closeSidebar}>
+              Startside
+            </Link>
           </li>
           <li>
-            <Link to="/terms">Vilkår og personvern</Link>
+            <Link to="/terms" onClick={closeSidebar}>
+              Vilkår og personvern
+            </Link>
           </li>
           <li>
-            <Link to="/">Samarbeid med oss</Link>
+            <Link to="/" onClick={closeSidebar}>
+              Samarbeid med oss
+            </Link>
           </li>
         </ul>
       </div>

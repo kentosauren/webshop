@@ -1,19 +1,21 @@
 
   
   
-  .sales-basket-item {
+  .order-basket-item {
     
     display: flex;
-    background-color: red;
-    width: 100%;
+    background-color: transparent;
+   
+    margin-top: 20px;
+    margin-bottom: 40px;
   
   }
   
-  .image-container {
+  .order-image-container {
     max-width: 100px;  /* Maximum width */
   }
   
-  .item-image {
+  .order-item-image {
     top: 0;
     left: 0;
     width: 100%;
@@ -25,7 +27,7 @@
   
   
   
-  .item-info {
+  .order-item-info {
     margin-left: 10px;
     flex-grow: 1;
     display: flex;
@@ -34,7 +36,7 @@
 
   
   
-  .item-counter {
+  .order-item-counter {
     display: flex;
     align-items: center;
   
@@ -43,18 +45,19 @@
 
   
   
-  .item-prices {
+  .order-item-prices {
     display: flex;
     align-items: flex-end; /* Aligns items to the right */
+    justify-content: flex-start; /* Aligns items to the top */
     flex-direction: column;
   }
   
-  .original-price {
+  .order-original-price {
     text-decoration: line-through;
     color: grey;
   }
   
-  .discounted-price {
+  .order-discounted-price {
     color: green;
     align-self: flex-end;
     

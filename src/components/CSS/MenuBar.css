@@ -20,7 +20,7 @@
     background-color: transparent;
     transition: background-color 0.3s ease;
     position: relative;
-    z-index: 1000;
+    z-index: 1;
   }
   
   .menu-bar.scrolling {
@@ -37,6 +37,10 @@
     font-size: 18pt;
   }
 
+  .padder{
+  margin-right: 10px;
+
+  }
   .menu-icon i,
 .cart-icon i {
   color: var(--darkPurple);
@@ -56,12 +60,11 @@
     justify-content: center;
     font-size: 12px;
     top: 9px;
-    right: 2px;
-  }
-  
-  .cart-count:hover {
+    right: 11px;
     animation: stretchSqueeze 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
   }
+  
+  
   
   @keyframes stretchSqueeze {
     0%, 100% {

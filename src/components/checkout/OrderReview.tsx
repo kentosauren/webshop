@@ -27,14 +27,20 @@ const OrderReview: React.FC<OrderReviewProps> = ({ shippingAmount }) => {
         imageUrl="../src/assets/img/4.jpg"
         updateTotalPrice={updateTotalPrice}
       />
+      <hr />
       <OrderTotal
         totalPrice={totalPrice}
         shippingAmount={shippingAmount}
         totalAmount={totalAmount}
       />
       <button
-        className="btn btn-primary rounded-pill"
-        style={{ backgroundColor: "var(--orange)" }}
+        style={{
+          backgroundColor: "var(--orange)",
+          borderRadius: "5px",
+          fontWeight: "bold",
+          fontSize: "25px",
+          padding: "10px",
+        }}
       >
         Betal nå
       </button>

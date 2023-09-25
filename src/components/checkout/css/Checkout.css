@@ -6,6 +6,10 @@
     margin-right: auto;
     padding: 40px;
 
+    
+    min-width: 350px;
+    max-width: 1000px;
+
 }
 
 .custom-hr{

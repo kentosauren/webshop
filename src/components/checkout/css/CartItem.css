@@ -9,11 +9,14 @@ h1 {
 .sales-basket-item {
   display: flex;
   align-items: spa;
-  background-color: var(--lightBlue);
+  background-color: var(--pinkBlue);
   padding: 5px;
+  width: 80%;
   min-width: 350px;
   max-width: 800px;
   margin: 16px;
+  border: 1px solid var(--darkPurple);
+  border-radius: 3px;
 
 }
 
@@ -54,17 +57,47 @@ display: flex;
 
 }
 
-/* Set the counter button dimensions */
 .item-counter button {
-  width: 30px;
-  height: 30px;
+  /* Your existing styles */
+  width: 20px !important;
+  height: 20px;
+  padding: 0;
   background-color: white;
-  color: black;
+  color: var(--darkPurple);
   display: flex;
-  justify-content: center; /* Horizontally center the content */
-  align-items: center; /* Vertically center the content */
+  justify-content: center;
+  align-items: center;
+  border-left: 1px solid var(--darkPurple);
+  border-top: 1px solid var(--darkPurple);
+  border-right: 1px solid var(--darkPurple);
+  border-bottom: 1px solid var(--darkPurple);
 
+  transition: background-color 0.3s ease; /* Add transition for smoothness */
 }
+
+.item-counter button left{
+
+  border-top-left-radius: 10px;  /* Rounded top-left corner */
+  border-bottom-left-radius: 10px; /* Rounded top-right corner */
+  }
+
+  .item-counter button right{
+
+    border-top-right-radius: 10px;  /* Rounded top-left corner */
+    border-bottom-right-radius: 10px; /* Rounded top-right corner */
+    }
+
+/* Hover effect */
+.item-counter button:hover {
+  background-color: #f2f2f2; /* Light gray */
+  cursor: pointer;
+}
+
+/* Click effect */
+.item-counter button:active {
+  background-color: #e6e6e6; /* Slightly darker gray */
+}
+
 
 
 .item-prices {
