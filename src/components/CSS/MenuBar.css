@@ -37,10 +37,6 @@
     font-size: 18pt;
   }
 
-  .padder{
-  margin-right: 10px;
-
-  }
   .menu-icon i,
 .cart-icon i {
   color: var(--darkPurple);

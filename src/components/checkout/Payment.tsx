@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./CSS/Payment.css";
+import PaymentComponent from "./PaymentComponent";
 
 const Payment: React.FC = () => {
   const navigate = useNavigate();
@@ -17,6 +18,7 @@ const Payment: React.FC = () => {
     <div>
       <h3>Betaling</h3>
       <div className="text1">Alle transaksjoner er sikre og krypterte.</div>
+      <PaymentComponent />
       {/* Your form fields and other UI elements go here */}
       {/* <div className="button-container">
         <button onClick={goToPreviousStep}>Previous</button>
