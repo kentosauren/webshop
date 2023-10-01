@@ -31,10 +31,10 @@ const MenuBar: React.FC = () => {
     }
   };
 
-  const updateQuantity = (newQuantity: number) => {
-    setQuantity(newQuantity);
-    localStorage.setItem("itemQuantity", newQuantity.toString());
-  };
+  // const updateQuantity = (newQuantity: number) => {
+  //   setQuantity(newQuantity);
+  //   localStorage.setItem("itemQuantity", newQuantity.toString());
+  // };
 
   useEffect(() => {
     // Fetch the initial quantity from local storage

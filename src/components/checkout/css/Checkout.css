@@ -13,9 +13,7 @@
 }
 
 .custom-hr{
-    margin-bottom: 30px;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
-div + hr {
-    margin-top: 50px;
-  }

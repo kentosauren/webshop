@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import ItemCard from "./ItemCard";
 
 import ImageCarouselResponsive from "./ImageCarouselResponsive";

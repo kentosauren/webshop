@@ -1,5 +1,4 @@
 // ItemInfo.tsx
-import React, { useEffect } from "react";
 import "./CSS/ItemInfo.css"; // Adjust this path to match your folder structure
 
 interface ItemInfoProps {

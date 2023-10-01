@@ -16,10 +16,11 @@ const Checkout: React.FC = () => {
         <DeliveryInfo />
         <hr className="custom-hr" />
         <Shipping setShippingAmount={setShippingAmount} />
-        <hr className="custom-hr" />
-        <Payment />
+
         <hr className="custom-hr" />
         <OrderReview shippingAmount={shippingAmount} />
+        <hr className="custom-hra" />
+        <Payment />
       </div>
     </>
   );

@@ -1,0 +1,33 @@
+.payment-form {
+    width: 100%;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .StripeElement{
+    background-color: white;
+    width: 100%;
+    border: 1px solid var(--darkPurple);
+    border-radius: 5px;
+    font-size: 35px;
+    line-height: 40px;  /* Add this line */
+    padding: 7px;
+  }
+
+  /* .StripeElement {
+    border: 1px solid var(--darkPurple);
+    padding: 10px;
+  } */
+  
+  .StripeElement--invalid {
+    border: 1px solid red;
+  }
+  
+  /* Add any other custom styles here */
+  
+  .payNowButton
+  {
+border-radius: 5px;
+  }

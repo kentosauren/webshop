@@ -29,14 +29,7 @@ min-height: 400px;
   }
   
  
-  hr {
-    opacity: 1;
-    background-color:white; /* Use background-color instead of color */
-    height: 2px;  /* Increased height for thickness */
-    border: none; /* Remove default border */
-    margin: 0;
-  }
-  
+ 
  
 
 

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import "./CSS/DeliveryInfo.css";
 
 interface DeliveryInfo {
@@ -39,7 +38,7 @@ const DeliveryInfo: React.FC = () => {
     Partial<Record<keyof DeliveryInfo, string>>
   >({});
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -57,31 +56,31 @@ const DeliveryInfo: React.FC = () => {
     return errors[fieldName] ? "error" : "";
   };
 
-  const validatePhoneNumber = (num: string) => {
-    const pattern = /^\d{8}$/;
-    return pattern.test(num);
-  };
+  // const validatePhoneNumber = (num: string) => {
+  //   const pattern = /^\d{8}$/;
+  //   return pattern.test(num);
+  // };
 
-  const validateForm = () => {
-    const newErrors: Partial<Record<keyof DeliveryInfo, string>> = {};
+  // const validateForm = () => {
+  //   const newErrors: Partial<Record<keyof DeliveryInfo, string>> = {};
 
-    Object.keys(info).forEach((key) => {
-      if (!info[key as keyof DeliveryInfo]) {
-        newErrors[key as keyof DeliveryInfo] = "Dette feltet er obligatorisk";
-      }
-    });
+  //   Object.keys(info).forEach((key) => {
+  //     if (!info[key as keyof DeliveryInfo]) {
+  //       newErrors[key as keyof DeliveryInfo] = "Dette feltet er obligatorisk";
+  //     }
+  //   });
 
-    if (!/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(info.email)) {
-      newErrors.email = "Ugyldig e-post";
-    }
+  //   if (!/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(info.email)) {
+  //     newErrors.email = "Ugyldig e-post";
+  //   }
 
-    if (!validatePhoneNumber(info.phone)) {
-      newErrors.phone = "Ugyldig telefonnummer";
-    }
+  //   if (!validatePhoneNumber(info.phone)) {
+  //     newErrors.phone = "Ugyldig telefonnummer";
+  //   }
 
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
+  //   setErrors(newErrors);
+  //   return Object.keys(newErrors).length === 0;
+  // };
 
   return (
     <>

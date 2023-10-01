@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import OrderItem from "./OrderItem";
 import OrderTotal from "./OrderTotal";
 
@@ -33,7 +33,7 @@ const OrderReview: React.FC<OrderReviewProps> = ({ shippingAmount }) => {
         shippingAmount={shippingAmount}
         totalAmount={totalAmount}
       />
-      <button
+      {/* <button
         style={{
           backgroundColor: "var(--orange)",
           borderRadius: "5px",
@@ -43,7 +43,7 @@ const OrderReview: React.FC<OrderReviewProps> = ({ shippingAmount }) => {
         }}
       >
         Betal nå
-      </button>
+      </button> */}
     </>
   );
 };

@@ -7,12 +7,11 @@
     background-color: transparent;
    
     margin-top: 20px;
-    margin-bottom: 40px;
-  
+    margin-bottom: 10px;
   }
   
   .order-image-container {
-    max-width: 100px;  /* Maximum width */
+    max-width: 130px;  /* Maximum width */
   }
   
   .order-item-image {
@@ -39,7 +38,6 @@
   .order-item-counter {
     display: flex;
     align-items: center;
-  
   }
   
 
@@ -60,6 +58,7 @@
   .order-discounted-price {
     color: green;
     align-self: flex-end;
+    font-size: x-large;
     
   }
   

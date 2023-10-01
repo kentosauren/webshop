@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import TopBar from "./components/topBar";
 import MenuBar from "./components/MenuBar";
 import Footer from "./components/Footer";
@@ -6,6 +6,8 @@ import ThreeColumnSection from "./components/ThreeColumnSection";
 import FeatureBlocks from "./components/FeatureBlocks";
 import Cart from "./components/checkout/Cart";
 import Checkout from "./components/checkout/Checkout";
+import PaymentConfirmation from "./components/checkout/PaymentConfirmation";
+import ScrollToTop from "./components/ScrollToTop";
 
 import ProductPage from "./components/ProductPage";
 // import CheckoutWizard from "./components/checkout/CheckoutWizard";
@@ -28,10 +30,13 @@ function App() {
       {/* <QuantityProvider> */}
       <TopBar />
       <MenuBar />
+      <ScrollToTop />
+
       <Routes>
         <Route path="/" element={<ProductPage />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/confirmation" element={<PaymentConfirmation />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/returns" element={<ReturnPolicy />} />
       </Routes>

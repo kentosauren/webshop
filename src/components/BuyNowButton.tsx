@@ -7,10 +7,10 @@ const BuyNowButton: React.FC = () => {
   const [isSticky, setIsSticky] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  const updateQuantity = (newQuantity: number) => {
-    setQuantity(newQuantity);
-    localStorage.setItem("itemQuantity", newQuantity.toString());
-  };
+  // const updateQuantity = (newQuantity: number) => {
+  //   setQuantity(newQuantity);
+  //   localStorage.setItem("itemQuantity", newQuantity.toString());
+  // };
 
   const incrementQuantity = () => {
     const newQuantity = quantity + 1;
