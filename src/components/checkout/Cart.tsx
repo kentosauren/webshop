@@ -44,12 +44,12 @@ const Cart: React.FC = () => {
       <div className="outer">
         <h1>Din handlekurv</h1>
         {quantity > 0 ? (
-          <div className="container-center ">
+          <div className="container-center">
             <CartItem
               itemName="Laptop Original max pro ultra 4k"
               originalPrice={Math.round(price * 1.33)}
               discountedPrice={price}
-              imageUrl="../src/assets/img/4.jpg"
+              imageUrl="src/assets/img/smartpipe.png"
               updateTotalPrice={updateTotalPrice}
               quantity={quantity}
               setQuantity={setQuantity}

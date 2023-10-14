@@ -24,8 +24,8 @@
   width: 300px;
 }
 .three-column-section > .column:last-child {
-  margin-left: auto;
   width: 150px;
+  left:0;
 }
 
 .bold-header {

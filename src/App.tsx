@@ -6,7 +6,7 @@ import ThreeColumnSection from "./components/ThreeColumnSection";
 import FeatureBlocks from "./components/FeatureBlocks";
 import Cart from "./components/checkout/Cart";
 import Checkout from "./components/checkout/Checkout";
-import PaymentConfirmation from "./components/checkout/PaymentConfirmation";
+import OrderConfirmation from "./components/checkout/OrderConfirmation";
 import ScrollToTop from "./components/ScrollToTop";
 
 import ProductPage from "./components/ProductPage";
@@ -36,7 +36,25 @@ function App() {
         <Route path="/" element={<ProductPage />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
-        <Route path="/confirmation" element={<PaymentConfirmation />} />
+        <Route
+          path="/confirmation"
+          element={
+            <OrderConfirmation
+              orderNumber={1005}
+              products={[
+                {
+                  name: "Unlimited Leather Shoes",
+                  details: "Medium / Classic / Red",
+                  price: 142.0,
+                  imageUrl: "src/assets/img/smartpipe.png",
+                },
+              ]}
+              subtotal={702.0}
+              taxes={62.3}
+              total={764.3}
+            />
+          }
+        />
         <Route path="/terms" element={<Terms />} />
         <Route path="/returns" element={<ReturnPolicy />} />
       </Routes>

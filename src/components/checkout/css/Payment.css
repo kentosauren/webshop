@@ -3,3 +3,13 @@
     font-size: 10pt;
     color: rgb(122, 122, 122);
 }
+
+.vipps{
+
+    width: 300px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}

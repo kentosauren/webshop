@@ -10,36 +10,10 @@ import {
 } from "@stripe/react-stripe-js";
 import "./css/PaymentForm.css"; // Import your custom CSS
 
-const PaymentForm = ({ clientSecret }: { clientSecret: string | null }) => {
+const PaymentForm = () => {
   const price = 1199;
   const shipping = 50;
   const navigate = useNavigate();
-
-  //   const ELEMENT_OPTIONS = {
-  //     style: {
-  //       base: {
-  //         backgroundColor: "white",
-  //         color: "#32325d",
-
-  //         fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-  //         fontSmoothing: "antialiased",
-  //         fontSize: "20px",
-  //         lineHeight: "40px", // to increase the height
-  //         padding: "10px", // to add space around the text
-  //         border: "1px solid grey", // to add a border
-  //         borderRadius: "5px", // to add rounded corners
-
-  //         "::placeholder": {
-  //           color: "#aab7c4",
-  //         },
-  //       },
-  //       invalid: {
-  //         color: "#fa755a",
-  //         iconColor: "#fa755a",
-  //         borderColor: "red",
-  //       },
-  //     },
-  //   };
 
   const [quantity, setQuantity] = useState<number>(0);
 
@@ -91,12 +65,20 @@ const PaymentForm = ({ clientSecret }: { clientSecret: string | null }) => {
       },
     });
 
+    // Interpret the outcome of the payment attempt
     if (result.error) {
-      console.error(result.error.message);
-    } else {
+      // Payment failed
+      alert(`Payment failed: ${result.error.message}`);
+    } else if (
+      result.paymentIntent &&
+      result.paymentIntent.status === "succeeded"
+    ) {
       // Payment succeeded
       console.log("Payment succeeded:", result);
       navigate("/confirmation");
+    } else {
+      // Other payment statuses like 'requires_action' or 'requires_payment_method'
+      alert(`Payment status: ${result.paymentIntent?.status}`);
     }
   };
 
@@ -115,18 +97,34 @@ const PaymentForm = ({ clientSecret }: { clientSecret: string | null }) => {
 
   return (
     <form onSubmit={handleSubmit}>
+      <div className="header-row">
+        <h6>Bankkort</h6>
+        <img src="src/assets/img/paymentCards2.png" alt="Visa, Mastercard" />
+      </div>
       <div className="form-group">
-        <label>Kortnummber, qty: {quantity}</label>
+        <label>Navn på kort</label>
+        <input
+          className="form-control"
+          type="text"
+          placeholder="Navn på kort"
+          required
+        />
+      </div>
+      <div className="form-group">
+        <label>Kortnummer</label>
         <CardNumberElement onChange={handleChange} />
       </div>
-      <div className="form-group">
-        <label>Utløpsdato</label>
-        <CardExpiryElement onChange={handleChange} />
+      <div className="row">
+        <div className="col">
+          <label>Utløpsdato</label>
+          <CardExpiryElement onChange={handleChange} />
+        </div>
+        <div className="col">
+          <label>Sikkerhetskode</label>
+          <CardCvcElement onChange={handleChange} />
+        </div>
       </div>
-      <div className="form-group">
-        <label>Sikkerhetskode</label>
-        <CardCvcElement onChange={handleChange} />
-      </div>
+      <br />
 
       {error && <div className="error">{error}</div>}
       <button className="payNowButton" type="submit" disabled={!stripe}>

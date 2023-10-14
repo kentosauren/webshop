@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "./CSS/DeliveryInfo.css";
+
+interface DeliveryInfoProps {
+  onSubmit: () => void;
+  isEditable: boolean;
+  setEditable: (value: boolean) => void;
+}
 
 interface DeliveryInfo {
   email: string;
@@ -9,9 +16,6 @@ interface DeliveryInfo {
   street: string;
   zip: string;
   city: string;
-  //country: string;
-  //notes: string;
-  //sendNews: boolean;
 }
 
 const initialInfo: DeliveryInfo = {
@@ -22,14 +26,13 @@ const initialInfo: DeliveryInfo = {
   street: "",
   zip: "",
   city: "",
-  //country: "",
-  //notes: "",
-  //sendNews: false,
 };
 
-const DeliveryInfo: React.FC = () => {
+const DeliveryInfo: React.FC<DeliveryInfoProps> = ({
+  onSubmit,
+  isEditable,
+}) => {
   const [info, setInfo] = useState<DeliveryInfo>(() => {
-    // Try to load initial state from local storage
     const storedInfo = localStorage.getItem("deliveryInfo");
     return storedInfo ? JSON.parse(storedInfo) : initialInfo;
   });
@@ -37,8 +40,6 @@ const DeliveryInfo: React.FC = () => {
   const [errors, setErrors] = useState<
     Partial<Record<keyof DeliveryInfo, string>>
   >({});
-
-  // const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -56,135 +57,182 @@ const DeliveryInfo: React.FC = () => {
     return errors[fieldName] ? "error" : "";
   };
 
-  // const validatePhoneNumber = (num: string) => {
-  //   const pattern = /^\d{8}$/;
-  //   return pattern.test(num);
-  // };
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
-  // const validateForm = () => {
-  //   const newErrors: Partial<Record<keyof DeliveryInfo, string>> = {};
+    // Validate the form
+    const isValid = validateForm();
 
-  //   Object.keys(info).forEach((key) => {
-  //     if (!info[key as keyof DeliveryInfo]) {
-  //       newErrors[key as keyof DeliveryInfo] = "Dette feltet er obligatorisk";
-  //     }
-  //   });
+    // If the form is not valid, stop the function
+    if (!isValid) {
+      return;
+    }
 
-  //   if (!/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(info.email)) {
-  //     newErrors.email = "Ugyldig e-post";
-  //   }
+    // Proceed with the API request if the form is valid
+    try {
+      const response = await axios.post(
+        "http://localhost:3001/api/save-delivery-info",
+        info
+      );
+      console.log(response.data);
 
-  //   if (!validatePhoneNumber(info.phone)) {
-  //     newErrors.phone = "Ugyldig telefonnummer";
-  //   }
+      // If successful, call the onSubmit callback
+      onSubmit();
+    } catch (error) {
+      console.error("Error saving delivery info", error);
+    }
+  };
 
-  //   setErrors(newErrors);
-  //   return Object.keys(newErrors).length === 0;
-  // };
+  const validatePhoneNumber = (num: string) => {
+    const pattern = /^\d{8}$/;
+    return pattern.test(num);
+  };
+
+  const validateForm = () => {
+    const newErrors: Partial<Record<keyof DeliveryInfo, string>> = {};
+
+    Object.keys(info).forEach((key) => {
+      if (!info[key as keyof DeliveryInfo]) {
+        newErrors[key as keyof DeliveryInfo] = "Dette feltet er obligatorisk";
+      }
+    });
+
+    if (!/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(info.email)) {
+      newErrors.email = "Ugyldig e-post";
+    }
+
+    if (!validatePhoneNumber(info.phone)) {
+      newErrors.phone = "Ugyldig telefonnummer";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   return (
-    <>
+    <div>
       <h3>Kontakt</h3>
-      <form>
-        <div className={`input-row input-row-full ${getErrorClass("email")}`}>
-          <input
-            type="text"
-            name="email"
-            placeholder="E-post"
-            value={info.email}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="error-message">{errors.email}</div>
 
-        <div className="checkbox-row">
-          <input
-            type="checkbox"
-            id="sendNews"
-            name="sendNews"
-            //checked={info.sendNews}
-            onChange={handleChange} // Assumes handleChange also handles checkboxes
-          />
-          <label htmlFor="sendNews">Send meg nyheter og tilbud på e-post</label>
+      <div
+        className={`floating-label input-row input-row-full ${getErrorClass(
+          "email"
+        )}`}
+      >
+        <input
+          type="text"
+          name="email"
+          value={info.email}
+          onChange={handleChange}
+          disabled={!isEditable}
+          required
+        />
+        <label>E-post</label>
+      </div>
+      <div className="error-message">{errors.email}</div>
+
+      <div className="checkbox-row">
+        <input
+          type="checkbox"
+          id="sendNews"
+          name="sendNews"
+          onChange={handleChange}
+        />
+        <label htmlFor="sendNews">Send meg nyheter og tilbud på e-post</label>
+      </div>
+      <div className={`floating-label input-row ${getErrorClass("firstName")}`}>
+        <input
+          type="text"
+          name="firstName"
+          value={info.firstName}
+          onChange={handleChange}
+          required
+        />
+        <label>Fornavn</label>
+      </div>
+      <div className="error-message">{errors.firstName}</div>
+
+      <div className={`floating-label input-row ${getErrorClass("lastName")}`}>
+        <input
+          type="text"
+          name="lastName"
+          value={info.lastName}
+          onChange={handleChange}
+          required
+        />
+        <label>Etternavn</label>
+      </div>
+      <div className="error-message">{errors.lastName}</div>
+      <div
+        className={`floating-label input-row input-row-full ${getErrorClass(
+          "street"
+        )}`}
+      >
+        <input
+          type="text"
+          name="street"
+          value={info.street}
+          onChange={handleChange}
+          required
+        />
+        <label>Gateadresse</label>
+      </div>
+      <div className="error-message">{errors.street}</div>
+
+      <div className="row">
+        <div className="col">
+          <div className={`floating-label input-row ${getErrorClass("zip")}`}>
+            <input
+              type="text"
+              name="zip"
+              value={info.zip}
+              onChange={handleChange}
+              required
+            />
+          </div>
         </div>
 
+        <div className="col">
+          <label>Postnummer</label>
+          <div className="error-message">{errors.zip}</div>
+
+          <div className={`floating-label input-row ${getErrorClass("city")}`}>
+            <input
+              type="text"
+              name="city"
+              value={info.city}
+              onChange={handleChange}
+              required
+            />
+            <label>Sted</label>
+          </div>
+          <div className="error-message">{errors.city}</div>
+        </div>
+      </div>
+
+      <div
+        className={`floating-label input-row input-row-full ${getErrorClass(
+          "phone"
+        )}`}
+      >
+        <input
+          type="tel"
+          name="phone"
+          value={info.phone}
+          onChange={handleChange}
+          required
+        />
+        <label>Telefonnummer</label>
+      </div>
+      <div className="error-message">{errors.phone}</div>
+
+      <form onSubmit={handleSubmit}>
         <br />
-
-        <h6>Leveringsadresse</h6>
-
-        <div
-          className={`input-row ${getErrorClass("firstName")} ${getErrorClass(
-            "lastName"
-          )}`}
-        >
-          <input
-            type="text"
-            name="firstName"
-            placeholder="Fornavn"
-            value={info.firstName}
-            onChange={handleChange}
-          />
-          <input
-            type="text"
-            name="lastName"
-            placeholder="Etternavn"
-            value={info.lastName}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="error-message">
-          {errors.firstName || errors.lastName}
-        </div>
-
-        <div className={`input-row input-row-full ${getErrorClass("street")}`}>
-          <input
-            type="text"
-            name="street"
-            placeholder="Gateadresse"
-            value={info.street}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="error-message">{errors.street}</div>
-
-        <div
-          className={`input-row ${getErrorClass("zip")} ${getErrorClass(
-            "city"
-          )}`}
-        >
-          <input
-            type="text"
-            name="zip"
-            placeholder="Postnummer"
-            value={info.zip}
-            onChange={handleChange}
-          />
-          <input
-            type="text"
-            name="city"
-            placeholder="By"
-            value={info.city}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="error-message">{errors.zip || errors.city}</div>
-
-        <div className={`input-row input-row-full ${getErrorClass("phone")}`}>
-          <input
-            type="tel"
-            name="phone"
-            placeholder="Telefonnummer"
-            value={info.phone}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="error-message">{errors.phone}</div>
+        <center>
+          <input type="submit" value="Fortsett til frakt og betaling" />
+        </center>
+        <br />
       </form>
-      {/* <div className="button-container">
-          <button onClick={goToPreviousStep}>Forrige</button>
-          <button onClick={goToNextStep}>Fortsett til frakt</button>
-        </div> */}
-    </>
+    </div>
   );
 };
 

@@ -7,6 +7,7 @@ const Payment: React.FC = () => {
     <div style={{ marginTop: "40px" }}>
       <h3>Betaling</h3>
       <div className="text1">Alle transaksjoner er sikre og krypterte.</div>
+      <br />
       <PaymentComponent />
     </div>
   );

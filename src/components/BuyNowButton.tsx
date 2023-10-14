@@ -2,30 +2,33 @@ import React, { useRef, useEffect, useState } from "react";
 import "./CSS/BuyNowButton.css";
 import "font-awesome/css/font-awesome.min.css";
 
-const BuyNowButton: React.FC = () => {
+interface Props {
+  productId: string;
+}
+
+const BuyNowButton: React.FC<Props> = ({ productId }) => {
   const [quantity, setQuantity] = useState<number>(0);
   const [isSticky, setIsSticky] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
-
-  // const updateQuantity = (newQuantity: number) => {
-  //   setQuantity(newQuantity);
-  //   localStorage.setItem("itemQuantity", newQuantity.toString());
-  // };
 
   const incrementQuantity = () => {
     const newQuantity = quantity + 1;
     setQuantity(newQuantity);
     localStorage.setItem("itemQuantity", newQuantity.toString());
+    localStorage.setItem("productId", productId);
 
-    // Dispatch a custom event to notify other components about the update
     window.dispatchEvent(new Event("itemQuantityUpdated"));
   };
 
   useEffect(() => {
-    // Get the initial quantity value from local storage if it exists
     const initialQuantity = localStorage.getItem("itemQuantity");
     if (initialQuantity) {
       setQuantity(Number(initialQuantity));
+    }
+
+    const storedProductId = localStorage.getItem("productId");
+    if (storedProductId && storedProductId === productId) {
+      // Handle initialization based on stored productId
     }
 
     const handleScroll = () => {
@@ -43,7 +46,7 @@ const BuyNowButton: React.FC = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [productId]);
 
   return (
     <>
